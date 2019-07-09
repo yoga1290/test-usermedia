@@ -10,7 +10,8 @@
         </video>
 
         <script>
-
+            var chunks = [];
+            
             function ondataavailable(blobEvent) {
                 var blob = blobEvent.data
                 console.log('blob', blob.type ,blob.size);
@@ -26,7 +27,7 @@
 
                 mediaRecorder.onstop = function(e) {
                     socket.emit('end', {});
-                    var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+                    var blob = new Blob(chunks, { 'type' : 'video/*; codecs=opus' });
                     chunks = [];
                     var audioURL = URL.createObjectURL(blob);
                     // var audio = document.createElement('audio');
