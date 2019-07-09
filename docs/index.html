@@ -19,32 +19,35 @@
             }
             // iOS & WebAPI:
             function streamReady(stream) {
-                            console.log('stream', stream);
-                var mediaRecorder = new MediaRecorder(stream);
-                // https://developer.mozilla.org/en-US/docs/Web/API/BlobEvent
-                mediaRecorder.ondataavailable = ondataavailable;
+                var video = document.getElementById('video');
+                video.srcObject = stream;
 
-                mediaRecorder.onstop = function(e) {
-                    var blob = new Blob(chunks, { 'type' : 'video/*; codecs=opus' });
-                    chunks = [];
-                    var audioURL = URL.createObjectURL(blob);
-                    // var audio = document.createElement('audio');
-                    var video = document.getElementById('video');
-                    video.controls = true;
-                    video.src = audioURL;
-                    video.play();
-                    // video.setAttribute('controls', '');
-                    // document.body.appendChild(audio);
-                }
-                // https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/start#Syntax
-                // "The number of milliseconds to record into each Blob"
-                mediaRecorder.start(500);
-                console.log('mediaRecorder.state', mediaRecorder.state);
-                console.log("recorder started");
-                // setTimeout(function() {
-                //   mediaRecorder.stop();
-                // }, 50000);
-            //      mediaRecorder.stop();
+            //                 console.log('stream', stream);
+            //     var mediaRecorder = new MediaRecorder(stream);
+            //     // https://developer.mozilla.org/en-US/docs/Web/API/BlobEvent
+            //     mediaRecorder.ondataavailable = ondataavailable;
+
+            //     mediaRecorder.onstop = function(e) {
+            //         var blob = new Blob(chunks, { 'type' : 'video/*; codecs=opus' });
+            //         chunks = [];
+            //         var audioURL = URL.createObjectURL(blob);
+            //         // var audio = document.createElement('audio');
+            //         var video = document.getElementById('video');
+            //         video.controls = true;
+            //         video.src = audioURL;
+            //         video.play();
+            //         // video.setAttribute('controls', '');
+            //         // document.body.appendChild(audio);
+            //     }
+            //     // https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/start#Syntax
+            //     // "The number of milliseconds to record into each Blob"
+            //     mediaRecorder.start(500);
+            //     console.log('mediaRecorder.state', mediaRecorder.state);
+            //     console.log("recorder started");
+            //     // setTimeout(function() {
+            //     //   mediaRecorder.stop();
+            //     // }, 50000);
+            // //      mediaRecorder.stop();
             }
 
             function start() {
