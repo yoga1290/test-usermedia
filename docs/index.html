@@ -70,13 +70,16 @@
 
             function start() {
                 if (navigator.mediaDevices) {
-                console.log('getUserMedia supported.');
-                var constraints = { audio: true, video:true };
-                navigator.mediaDevices.getUserMedia(constraints)
-                .then(streamReady)
-                .catch(function(err) {
-                    console.log('The following error occurred: ' + err);
-                })
+                    console.log('getUserMedia supported.');
+                    var constraints = { audio: true, video:true };
+                    navigator.mediaDevices.getUserMedia(constraints)
+                    .then(streamReady)
+                    .catch(function(err) {
+                        console.log('The following error occurred: ' + err);
+                    })
+                } else {
+
+                    //TODO: use https://www.npmjs.com/package/cordova-plugin-camera-stream
                 }
             }
             start();
