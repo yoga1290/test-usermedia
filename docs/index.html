@@ -1,14 +1,30 @@
 <html>
     <head>
-
+        <style>
+            .absolute {
+                position: absolute;
+            }
+            .relative {
+                position: relative;
+                font-size: 32px;
+            }
+        </style>
     </head>
     <body>
-        <video
-            autoplay
-            id="video"
-            width="300"
-            height="300">
-        </video>
+
+        <div class="absolute">
+            <div class="relative">
+                    HELLO
+                </div>
+                <video
+                autoplay
+                id="video"
+                width="300"
+                height="300">
+                
+            </video>
+        </div>
+        
 
         <script>
             var chunks = [];
